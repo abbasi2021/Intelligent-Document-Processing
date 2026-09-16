@@ -1,45 +1,38 @@
-# Vekalatname Extractor
+# Document Extractor
 
-استخراج ساخت‌یافته اطلاعات (طرفین، متادیتا) از اسناد رسمی (وکالت‌نامه و مشابه) با استفاده از یک مدل زبانی.
+Structured information extraction from documents (such as power of attorney documents and similar files), including parties and metadata, using a Large Language Model (LLM).
 
-## نصب
+## Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## پیکربندی (قبل از اجرا الزامی است)
+## Configuration (Required Before Running)
 
-این ریپازیتوری به‌صورت عمدی **بدون** اطلاعات حساس و بدون Schema واقعی منتشر شده. قبل از اجرا باید دو فایل را خودتان محلی بسازید (هیچ‌کدام commit نمی‌شوند):
+Before running the application, you must create the following files locally. These files contain sensitive information and are **not committed to the repository**.
 
-1. **`.env`** — یک کپی از `.env.example` بسازید و مقادیر واقعی API را وارد کنید:
-   ```bash
-   cp .env.example .env
-   ```
+### `.env`
 
-2. **`extraction_config.json`** — یک کپی از `extraction_config.example.json` بسازید و Schema و پرامپت واقعی خودتان را در آن قرار دهید:
-   ```bash
-   cp extraction_config.example.json extraction_config.json
-   ```
-   ساختار فایل:
-   ```json
-   {
-     "system_prompt_template": "متن پرامپت شما، با یک {response_format} برای جای‌گذاری خودکار Schema",
-     "response_format": { "...": "Schema واقعی JSON Schema شما اینجا" }
-   }
-   ```
+Create a local copy of `.env.example` and enter your actual API credentials:
 
-## اجرا
+```bash
+cp .env.example .env
+```
+
+### `extraction_config.json`
+
+Create a local copy of `extraction_config.example.json` and configure it according to your requirements.
+
+## Usage
 
 ```bash
 python app.py
 ```
 
-## ساختار پوشه‌ها
+## Folder Structure
 
+```text
+input/     ← Input PDF files (add your files here)
+output/    ← Generated CSV files and logs (created automatically)
 ```
-input/   ← فایل‌های PDF ورودی (خودتان اضافه کنید)
-output/               ← خروجی CSV و لاگ‌ها (به‌صورت خودکار ساخته می‌شود)
-```
-
-> **نکته امنیتی:** فایل‌های `.env` و `extraction_config.json` در `.gitignore` قرار دارند و هرگز نباید commit شوند، چون شامل کلید API و منطق تجاری (Schema استخراج) هستند.
