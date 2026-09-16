@@ -1,0 +1,31 @@
+{
+  "_comment": "این یک نمونه ساختگی است. فایل واقعی extraction_config.json را خودتان محلی بسازید و هرگز commit نکنید.",
+  "system_prompt_template": "شرح وظیفه مدل برای استخراج اطلاعات از سند + {response_format}",
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "extracted_info",
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "field_1": {"type": "string", "description": "توضیح فیلد نمونه"}
+            },
+            "required": ["field_1"]
+          },
+          "parties": {
+            "type": "object",
+            "properties": {
+              "first_party": {"type": "array", "items": {"type": "object", "properties": {}}},
+              "second_party": {"type": "array", "items": {"type": "object", "properties": {}}}
+            }
+          }
+        },
+        "required": ["metadata", "parties"]
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# ===== فایل‌های حساس / خصوصی (هرگز نباید commit شوند) =====
+.env
+extraction_config.json
+config/extraction_config.json
+
+# ===== خروجی‌ها و داده‌های پردازش =====
+output/
+vekalatname/input/
+*.csv
+*.log
+
+# ===== محیط پایتون =====
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.egg-info/
+
+# ===== فایل‌های سیستمی/ادیتور =====
+.DS_Store
+.vscode/
+.idea/
